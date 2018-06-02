@@ -1,0 +1,66 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+xmlns:th="http://www.thymeleaf.org" >
+
+
+<head><title>Edit Page</title>
+<style>
+#student_info{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#student_info td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#student_infotr:nth-child(even){background-color: #f2f2f2;}
+
+#student_info tr:hover {background-color: #ddd;}
+
+#student_info th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+
+
+</head>
+
+<body>
+<h1>Student List</h1>
+
+<table id="student_info">
+  <tr>
+    <th>ID</th>
+    <th>FIRST NAME</th>
+    <th>LASTNAME</th>
+
+  </tr>
+ 	 <tr>
+		<form method="get" action="/save">
+	<td><input type="text" name="id" th:value="@{${lists.id}}" disabled></td>
+  <td><input type="text" name="firstname" th:value="@{${lists.firstname}}"></td>
+
+  <td><input type="text" name="lastname" th:value="@{${lists.lastname}}"></td>
+
+</form> 
+
+</tr>
+
+</table>
+  <input type="submit" value="Update">
+  <a href="/"> <input type="button" value="Back"></a>
+
+
+
+</body>
+</html>
+
+                            		                            
+

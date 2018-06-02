@@ -1,0 +1,69 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+xmlns:th="http://www.thymeleaf.org" >
+
+
+<head><title>Home Page</title>
+
+
+<style>
+#student_info{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#student_info td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#student_infotr:nth-child(even){background-color: #f2f2f2;}
+
+#student_info tr:hover {background-color: #ddd;}
+
+#student_info th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+
+
+</head>
+<h1>Student Lists</h1>
+<body>
+
+<table id="student_info">
+  <tr>
+    <th>ID</th>
+    <th>FIRST NAME</th>
+    <th>LASTNAME</th>
+     <th>ACTION</th>
+  </tr>
+ 	 <tr th:each="appusers:${lists}">
+		<td th:utext="${appusers.id}"></td>
+ 	 <td th:utext="${appusers.firstname}"></td>
+ 	 <td th:utext="${appusers.lastname}"></td>
+  	<td><a th:href="@{'view'+'/'+${appusers.id}}">View</a> 
+  	<a th:href="@{'edit'+'/'+${appusers.id}}">Edit</a> <a th:href="@{'delete'+'/'+${appusers.id}}">Delete</a> </td>
+  </tr>
+
+</table>
+<form method="post" action="/save">
+  First name:<br>
+  <input type="text" name="firstname">
+  <br>
+  Last name:<br>
+  <input type="text" name="lastname">
+  <br><br>
+  <input type="submit" value="Submit">
+</form> 
+
+</body>
+</html>
+
+                            		                            
+
