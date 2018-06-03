@@ -1,8 +1,8 @@
 package com.crud.Controllers;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,6 +58,17 @@ public class MainController {
 		ModelAndView mv=new ModelAndView("edit");
 		AppUsers user=repo.findById(id).get();
 		mv.addObject("lists",user);
+		return mv;
+		
+	}
+	
+	@RequestMapping(value="update/{id}",method=RequestMethod.POST)
+	public ModelAndView doUpdate(@PathVariable("id")int id,@RequestParam("firstname") String fname,@RequestParam("lastname") String lname){
+		ModelAndView mv=new ModelAndView("redirect:/");
+		AppUsers au=repo.findById(id).get();
+		au.setFirstname(fname);
+		au.setLastname(lname);
+		repo.save(au);
 		return mv;
 		
 	}

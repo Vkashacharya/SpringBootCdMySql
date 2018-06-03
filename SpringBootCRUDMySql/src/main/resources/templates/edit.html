@@ -40,21 +40,23 @@ xmlns:th="http://www.thymeleaf.org" >
     <th>ID</th>
     <th>FIRST NAME</th>
     <th>LASTNAME</th>
+    <th>Update</th>
 
   </tr>
  	 <tr>
-		<form method="get" action="/save">
+		<form method="post" th:action="@{'/update'+'/'+${lists.id}}">
 	<td><input type="text" name="id" th:value="@{${lists.id}}" disabled></td>
   <td><input type="text" name="firstname" th:value="@{${lists.firstname}}"></td>
 
   <td><input type="text" name="lastname" th:value="@{${lists.lastname}}"></td>
-
+ 
+   <td><input type="submit" value="Update"></td>
+</tr>
 </form> 
 
-</tr>
+
 
 </table>
-  <input type="submit" value="Update">
   <a href="/"> <input type="button" value="Back"></a>
 
 
